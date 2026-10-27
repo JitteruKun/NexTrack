@@ -52,6 +52,9 @@
     <symbol id="icon-ecg-heart" viewBox="0 -960 960 960" fill="currentColor">
       <path d="M480-480Zm0 360q-18 0-34.5-6.5T416-146L148-415q-35-35-51.5-80T80-589q0-103 67-177t167-74q48 0 90.5 19t75.5 53q32-34 74.5-53t90.5-19q100 0 167.5 74T880-590q0 49-17 94t-51 80L543-146q-13 13-29 19.5t-34 6.5Zm40-520q10 0 19 5t14 13l68 102h166q7-17 10.5-34.5T801-590q-2-69-46-118.5T645-758q-31 0-59.5 12T536-711l-27 29q-5 6-13 9.5t-16 3.5q-8 0-16-3.5t-14-9.5l-27-29q-21-23-49-36t-60-13q-66 0-110 50.5T160-590q0 18 3 35.5t10 34.5h187q10 0 19 5t14 13l35 52 54-162q4-12 14.5-20t23.5-8Zm12 130-54 162q-4 12-15 20t-24 8q-10 0-19-5t-14-13l-68-102H236l237 237q2 2 3.5 2.5t3.5.5q2 0 3.5-.5t3.5-2.5l236-237H600q-10 0-19-5t-15-13l-34-52Z" />
     </symbol>
+    <symbol id="icon-close" viewBox="0 -960 960 960" fill="currentColor">
+      <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+    </symbol>
   </svg>
 
   <header class="site-header">
@@ -68,6 +71,7 @@
     <nav class="main-nav" aria-label="Main">
       <a href="#how-it-works" data-section="how-it-works">How it works</a>
       <a href="#programs" data-section="programs">Explore programs</a>
+      <a href="colleges.html">Olongapo colleges</a>
       <a class="is-active" href="#welcome" data-section="welcome">Start Exploring</a>
     </nav>
 
@@ -98,6 +102,7 @@
               <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right" /></svg>
             </a>
             <a class="btn btn-soft" href="#programs">Explore Opportunities</a>
+            <a class="btn btn-soft" href="colleges.html">Olongapo Colleges</a>
           </div>
 
           <ul class="hero-checks">
@@ -107,7 +112,7 @@
         </div>
 
         <div class="hero-photo">
-          <img src="/assets/FrontPage.jpeg" alt="Student photo placeholder" />
+          <img src="assets/FrontPage.jpeg" alt="Student photo placeholder" />
         </div>
       </div>
 
@@ -161,74 +166,125 @@
       <div class="programs-grid">
         <article class="program-card">
           <div class="card-photo">
-            <img src="assets/computer-technologies.jpg" alt="Computer technologies" />
+            <img src="assets/Computer Technologies.png" alt="Circuit boards and digital systems" />
           </div>
           <div class="card-body">
             <div class="card-title-row">
               <h3 class="card-title">Computer Technologies</h3>
               <svg class="card-icon icon" aria-hidden="true"><use href="#icon-code" /></svg>
             </div>
-            <p class="card-desc">Solve analytical problems using computer technologies with AI and Machine Learning</p>
-            <a class="card-link" href="#">
+            <p class="card-desc">Build software, work with AI, and turn complex problems into tools people can use.</p>
+            <button class="card-link" type="button" data-track="computer" aria-haspopup="dialog" aria-controls="track-dialog">
               Explore this track
               <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg>
-            </a>
+            </button>
           </div>
         </article>
 
         <article class="program-card">
           <div class="card-photo">
-            <img src="assets/people-communities.jpg" alt="People and communities" />
+            <img src="assets/Teaching.png" alt="Students learning together in a classroom" />
           </div>
           <div class="card-body">
             <div class="card-title-row">
               <h3 class="card-title">People and Communities</h3>
               <svg class="card-icon icon" aria-hidden="true"><use href="#icon-groups" /></svg>
             </div>
-            <p class="card-desc">Solve analytical problems using computer technologies with AI and Machine Learning</p>
-            <a class="card-link" href="#">
+            <p class="card-desc">Turn empathy and communication into work that helps communities learn and grow.</p>
+            <button class="card-link" type="button" data-track="people" aria-haspopup="dialog" aria-controls="track-dialog">
               Explore this track
               <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg>
-            </a>
+            </button>
           </div>
         </article>
 
         <article class="program-card">
           <div class="card-photo">
-            <img src="assets/stocks-businesses.jpg" alt="Stocks and businesses" />
+            <img src="assets/Stocks.jpg" alt="Financial data and market trends" />
           </div>
           <div class="card-body">
             <div class="card-title-row">
               <h3 class="card-title">Stocks and Businesses</h3>
               <svg class="card-icon icon" aria-hidden="true"><use href="#icon-monitoring" /></svg>
             </div>
-            <p class="card-desc">Solve analytical problems using computer technologies with AI and Machine Learning</p>
-            <a class="card-link" href="#">
+            <p class="card-desc">Use data and strategy to understand markets and make confident business decisions.</p>
+            <button class="card-link" type="button" data-track="business" aria-haspopup="dialog" aria-controls="track-dialog">
               Explore this track
               <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg>
-            </a>
+            </button>
           </div>
         </article>
-
+        
         <article class="program-card">
           <div class="card-photo">
-            <img src="assets/allied-healthcare.jpg" alt="Allied healthcare" />
+            <img src="assets/Healthcare.jpg" alt="Healthcare professional using a tablet" />
           </div>
           <div class="card-body">
             <div class="card-title-row">
               <h3 class="card-title">Allied Healthcare</h3>
               <svg class="card-icon icon" aria-hidden="true"><use href="#icon-ecg-heart" /></svg>
             </div>
-            <p class="card-desc">Solve analytical problems using computer technologies with AI and Machine Learning</p>
-            <a class="card-link" href="#">
+            <p class="card-desc">Connect science and care to support people’s health, recovery, and wellbeing.</p>
+            <button class="card-link" type="button" data-track="health" aria-haspopup="dialog" aria-controls="track-dialog">
               Explore this track
               <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg>
-            </a>
+            </button>
           </div>
         </article>
       </div>
     </section>
   </main>
+
+  <dialog class="track-dialog" id="track-dialog" aria-labelledby="track-dialog-title">
+    <button class="track-close" type="button" aria-label="Close track details">
+      <span>Close</span>
+      <svg class="icon" aria-hidden="true"><use href="#icon-close" /></svg>
+    </button>
+
+    <div class="track-shell">
+      <div class="track-layout">
+        <aside class="track-clues-panel">
+          <div class="track-clues-head">
+            <p class="track-kicker">A few notes from your answers</p>
+            <p class="track-index"><span id="track-index">01</span><span class="track-index-total">/ 04</span></p>
+          </div>
+
+          <div class="track-chips" id="track-clues"></div>
+
+          <article class="track-program-card">
+            <div class="track-program-media">
+              <img id="track-photo" src="assets/Computer Technologies.png" alt="" />
+              <span class="track-program-icon">
+                <svg class="icon" aria-hidden="true"><use id="track-icon" href="#icon-code" /></svg>
+              </span>
+            </div>
+            <div class="track-program-body">
+              <p class="track-kicker track-kicker--small">One possible route</p>
+              <h2 class="track-program-name" id="track-program-name">BS Computer Science</h2>
+              <p class="track-why-label">Why it might fit</p>
+              <p class="track-why" id="track-why"></p>
+              <div class="track-tags" id="track-tags"></div>
+            </div>
+          </article>
+
+          <p class="track-note" id="track-note"></p>
+        </aside>
+
+        <section class="track-explainer">
+          <p class="track-kicker">What this could mean</p>
+          <h2 class="track-heading" id="track-dialog-title">See how your interests connect.</h2>
+          <p class="track-intro" id="track-intro"></p>
+          <p class="track-list-label">Three things this could say about you</p>
+          <ol class="track-reasons" id="track-reasons"></ol>
+
+          <button class="track-back" type="button" data-close-track>
+            Browse all tracks
+            <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right" /></svg>
+          </button>
+        </section>
+      </div>
+    </div>
+  </dialog>
 
   <script src="script.js"></script>
 </body>
