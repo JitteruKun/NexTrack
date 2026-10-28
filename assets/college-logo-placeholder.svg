@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="97" fill="#ffffff" />
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#0b6b45" stroke-width="2" stroke-dasharray="6 7" />
+  <text x="100" y="98" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="2" fill="#0b6b45">LOGO</text>
+  <text x="100" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="700" letter-spacing="3" fill="#0b6b45" fill-opacity="0.62">ADD SEAL</text>
+</svg>

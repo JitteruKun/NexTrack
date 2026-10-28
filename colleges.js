@@ -4,7 +4,6 @@
 
 (() => {
   const list = document.getElementById("college-list");
-  if (!list) return;
 
   /* -----------------------------------------
      TRACK LIBRARY
@@ -731,7 +730,9 @@
     {
       name: "Gordon College",
       // Adding a custom flag to trigger the special banner design
-      isReferenceDesign: true, 
+      isReferenceDesign: true,
+      color: "#1f7a3d",
+      colorDark: "#14532d",
       location: "Olongapo City, Philippines",
       program: "BS Computer Science",
       // YOU CAN REPLACE THESE URLS WITH YOUR LOCAL IMAGE PATHS
@@ -753,6 +754,8 @@
     },
     {
       name: "Columban College – Barretto",
+      color: "#2f5fbf",
+      colorDark: "#1e3f8a",
       location: "Olongapo City, Philippines",
       program: "Program name",
       photo: "",
@@ -775,6 +778,8 @@
     },
     {
       name: "Lyceum of Subic Bay",
+      color: "#3d1f4d",
+      colorDark: "#291034",
       location: "Olongapo City, Philippines",
       program: "Program name",
       photo: "",
@@ -789,6 +794,8 @@
     },
     {
       name: "Mondriaan Aura College",
+      color: "#a3285c",
+      colorDark: "#7a1b44",
       location: "Olongapo City, Philippines",
       program: "Program name",
       photo: "",
@@ -810,10 +817,12 @@
     },
     {
       name: "CELTECH College Olongapo",
+      color: "#2e7d32",
+      colorDark: "#1b5e20",
       location: "Olongapo City, Philippines",
       program: "Program name",
       photo: "",
-      logo: "/college profiles/Celtech.jpg",
+      logo: "/college profiles/CELTECH.jpg",
       email: "info@celtech.edu.ph",
       phone: "+63 47 222 6666",
       website: "celtech.edu.ph",
@@ -831,6 +840,8 @@
     },
     {
       name: "St. Joseph College – Olongapo",
+      color: "#2e8b57",
+      colorDark: "#1f6b41",
       location: "Olongapo City, Philippines",
       program: "Program name",
       photo: "",
@@ -845,10 +856,12 @@
     },
     {
       name: "COMTEQ Computer and Business College",
+      color: "#2a5fc4",
+      colorDark: "#1b3f8f",
       location: "Olongapo City, Philippines",
       program: "Program name",
       photo: "",
-      logo: "/college profiles/Comteq.png",
+      logo: "/college profiles/COMTEQ.png",
       email: "info@comteq.edu.ph",
       phone: "+63 47 222 8888",
       website: "comteq.edu.ph",
@@ -862,6 +875,8 @@
     },
     {
       name: "Subic Bay Colleges (SBCI)",
+      color: "#2c2f7a",
+      colorDark: "#1d1f55",
       location: "Olongapo City, Philippines",
       program: "Program name",
       photo: "",
@@ -876,6 +891,8 @@
     },
     {
       name: "The Manila Times College of Subic",
+      color: "#2f7d4f",
+      colorDark: "#1e5a37",
       location: "Olongapo City, Philippines",
       program: "Program name",
       photo: "",
@@ -893,6 +910,8 @@
     },
     {
       name: "St. Benilde Center for Global Competence",
+      color: "#0f5a2e",
+      colorDark: "#0a3d1f",
       location: "Olongapo City, Philippines",
       program: "Program name",
       photo: "",
@@ -912,10 +931,12 @@
     },
     {
       name: "College of Subic Montessori",
+      color: "#b01c1c",
+      colorDark: "#7f1111",
       location: "Olongapo City, Philippines",
       program: "Program name",
       photo: "",
-      logo: "/college profiles/montessori.jpg",
+      logo: "/college profiles/Montessori.jpg",
       email: "info@subicmontessori.edu.ph",
       phone: "+63 47 223 3333",
       website: "subicmontessori.edu.ph",
@@ -932,10 +953,12 @@
     },
     {
       name: "TESDA Zambales",
+      color: "#1746b8",
+      colorDark: "#0f2f80",
       location: "Olongapo City, Philippines",
       program: "Program name",
       photo: "",
-      logo: "/college profiles/Tesda.jpg",
+      logo: "/college profiles/TESDA.jpg",
       email: "info@tesda-zambales.gov.ph",
       phone: "+63 47 223 4444",
       website: "tesda.gov.ph",
@@ -945,6 +968,12 @@
       note: "TESDA is a government agency overseeing technical-vocational training and competency certification, not a single college with a fixed degree list. Locally listed qualifications include Computer Systems Servicing NC II, Automotive Servicing NC I, and hospitality/food-service qualifications. Exact course lists vary by training provider — check the TESDA registered training institution directory.",
     },
   ];
+
+  // Share the catalog with the quiz page (or any other page that needs it)
+  window.NextTrackData = { trackLibrary, colleges };
+
+  // The rest of this file renders the college directory
+  if (!list) return;
 
   /* -----------------------------------------
      RENDERING HELPERS
@@ -1033,6 +1062,11 @@
     
     // Check if this college uses the custom reference design
     const isReference = college.isReferenceDesign ? " is-reference-design" : "";
+
+    // Per-school banner colors, derived from each logo's palette
+    const bannerTheme = `--banner-color: ${college.color || "#2b6b3f"}; --banner-color-dark: ${
+      college.colorDark || "#1e4f2e"
+    };`;
     
     // If it's the reference design, we alter the text structure slightly
     const bannerCopy = college.isReferenceDesign 
@@ -1049,7 +1083,7 @@
 
     return `
       <article class="college-entry" id="${collegeId}">
-        <button class="college-banner${isReference}" type="button" aria-expanded="false" aria-controls="${collegeId}-panel">
+        <button class="college-banner${isReference}" style="${bannerTheme}" type="button" aria-expanded="false" aria-controls="${collegeId}-panel">
           <img class="college-photo" src="${escape(photoSrc)}" alt="" />
           <img class="college-logo" src="${escape(logoSrc)}" alt="" />
           <div class="college-banner-copy">
