@@ -3,20 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Olongapo City Colleges — NextTrack</title>
+  <title>Olongapo City Colleges — NexTrack</title>
   <meta name="description" content="A college directory for Olongapo City, with program and contact details." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="colleges.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/track-dialog.css" />
+  <link rel="stylesheet" href="css/pathways.css" />
+  <link rel="stylesheet" href="css/colleges.css" />
 </head>
 <body class="colleges-page">
   <svg class="svg-sprite" aria-hidden="true" focusable="false">
     <symbol id="icon-logo-bold" viewBox="0 0 24 24" fill="none">
-      <path d="M12 21.2s-6.9-6.3-6.9-11.1a6.9 6.9 0 0 1 12-4.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
-      <circle cx="12" cy="10" r="1.9" fill="currentColor" />
-      <path d="M18.4 2.6v7.2M14.8 6.2h7.2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.5" />
+      <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2.5" />
+      <circle cx="12" cy="12" r="1.9" fill="currentColor" />
     </symbol>
     <symbol id="icon-arrow-right" viewBox="0 -960 960 960" fill="currentColor">
       <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
@@ -30,26 +32,25 @@
   </svg>
 
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="NextTrack home">
+    <a class="brand" href="index.html" aria-label="NexTrack home">
       <span class="brand-mark">
         <svg class="icon" aria-hidden="true"><use href="#icon-logo-bold" /></svg>
       </span>
       <span class="brand-lockup">
-        <span class="brand-word">NextTrack</span>
+        <span class="brand-word">NexTrack</span>
         <svg class="brand-mini icon" aria-hidden="true"><use href="#icon-logo-bold" /></svg>
       </span>
     </a>
 
     <nav class="main-nav" aria-label="Main">
       <a href="index.html#how-it-works">How it works</a>
-      <a href="index.html#programs">Explore programs</a>
+      <a href="index.html#explore-programs">Explore programs</a>
       <a class="is-active" href="colleges.html">Olongapo colleges</a>
       <a href="quiz.html">Find my program</a>
-      <a href="index.html#welcome">Start Exploring</a>
     </nav>
 
-    <a class="btn btn-primary header-cta" href="index.html#programs">
-      Explore tracks
+    <a class="btn btn-primary header-cta" href="index.html#explore-programs">
+      Explore programs
       <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg>
     </a>
   </header>
@@ -59,14 +60,29 @@
       <p class="college-kicker">College directory</p>
       <h1 class="college-page-title" id="college-page-title">Colleges in Olongapo City</h1>
       <p class="college-lede">Tap any college to open its program list. Each program is grouped by field, and you can open a track to read what it covers.</p>
+      <p class="college-pathway-link"><a href="#beyond-olongapo">Looking for Fine Arts, Biology, or Engineering? See pathways.</a></p>
     </section>
 
     <section class="college-list" id="college-list" aria-label="Olongapo City college directory">
       <!-- College entries are rendered by colleges.js -->
     </section>
 
+    <section class="beyond-section" id="beyond-olongapo" aria-labelledby="beyond-title">
+      <div class="beyond-hero">
+        <p class="college-kicker">Beyond Olongapo</p>
+        <h2 class="beyond-title" id="beyond-title">Programs not offered in Olongapo (yet)</h2>
+        <p class="beyond-lede">These are in-demand programs that are not in the current Olongapo college directory. Each pathway shows the closest local bridge, the next step, and the official agency to check.</p>
+      </div>
+
+      <div id="beyond-list">
+        <!-- Gap-track cards are rendered by pathways.js -->
+      </div>
+
+      <p class="beyond-disclaimer">This section is a guide, not a verdict. Program availability changes; confirm the current offering, accreditation, and admission requirements with the school or agency before deciding.</p>
+    </section>
+
     <footer class="college-footer">
-      <p>NextTrack · Olongapo City college directory</p>
+      <p>NexTrack · Olongapo City college directory</p>
       <a href="index.html">Back to home</a>
     </footer>
   </main>
@@ -123,6 +139,8 @@
     </div>
   </dialog>
 
-  <script src="colleges.js"></script>
+  <script src="js/colleges.js"></script>
+  <script src="data/pathways-data.js"></script>
+  <script src="js/pathways.js"></script>
 </body>
 </html>

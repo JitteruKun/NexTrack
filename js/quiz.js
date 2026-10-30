@@ -10,6 +10,8 @@
 
   const data = window.NextTrackData;
   const quiz = window.NextTrackQuizData;
+  const pathwayData = window.NextTrackPathwaysData;
+  const pathwayUI = window.NextTrackPathways;
 
   if (!data || !quiz) {
     app.innerHTML = `
@@ -100,6 +102,40 @@
     return dot / Math.sqrt(normA * normB);
   };
 
+  const selectDiverse = (ranked, options = {}) => {
+    const {
+      limit = 3,
+      maxPerGroup = 2,
+      penalty = 0.035,
+      groupOf = () => "",
+    } = options;
+    const pool = ranked.slice();
+    const selected = [];
+
+    while (selected.length < limit && pool.length) {
+      let bestIndex = -1;
+      let bestScore = -Infinity;
+
+      pool.forEach((result, index) => {
+        const group = groupOf(result);
+        const used = selected.filter((item) => groupOf(item) === group).length;
+        if (used >= maxPerGroup) return;
+
+        const adjusted = result.score - used * penalty;
+        if (adjusted > bestScore) {
+          bestScore = adjusted;
+          bestIndex = index;
+        }
+      });
+
+      if (bestIndex === -1) break;
+      selected.push(pool[bestIndex]);
+      pool.splice(bestIndex, 1);
+    }
+
+    return selected;
+  };
+
   const getUserVector = () => {
     const vector = {};
     state.steps.forEach((step) => {
@@ -173,6 +209,22 @@
         return { key, profile, score: Math.max(0, score) };
       })
       .sort((a, b) => b.score - a.score || a.key.localeCompare(b.key));
+  };
+
+  const rankGapTracks = (vector) => {
+    if (!pathwayData) return [];
+
+    return pathwayData.gapTracks
+      .map((track) => ({
+        track,
+        score: Math.max(0, cosine(vector, track.traits)),
+      }))
+      .sort(
+        (a, b) =>
+          b.score - a.score ||
+          a.track.priority - b.track.priority ||
+          a.track.name.localeCompare(b.track.name)
+      );
   };
 
   const getFamilyRanking = (ranked) => {
@@ -342,7 +394,7 @@
     <section class="quiz-intro">
       <p class="quiz-kicker">Program finder</p>
       <h1 class="quiz-title">Find the Olongapo program that fits you.</h1>
-      <p class="quiz-lede">This quiz uses a weighted content-based match across all 41 college programs in the directory, plus TESDA certificate routes. It is a guide, not a verdict.</p>
+      <p class="quiz-lede">This quiz uses a weighted content-based match across all 41 college programs in the directory, plus TESDA certificate routes and a separate bridge for in-demand programs not offered in Olongapo. It is a guide, not a verdict.</p>
 
       <div class="path-grid">
         <button class="path-card" type="button" data-path="college">
@@ -421,7 +473,7 @@
         <h1 class="quiz-question">${escapeHtml(question.text)}</h1>
         ${question.hint ? `<p class="quiz-hint">${escapeHtml(question.hint)}</p>` : ""}
 
-        <div class="quiz-options${question.id === "world" ? " quiz-options--wide" : ""}">
+        <div class="quiz-options${question.options.length > 6 ? " quiz-options--wide" : ""}">
           ${question.options
             .map((option, index) => renderOption(option, index, selected))
             .join("")}
@@ -491,6 +543,49 @@
       </article>`;
   };
 
+  const renderBeyondResults = (vector) => {
+    if (!pathwayData || !pathwayUI?.renderCard) return "";
+
+    const matches = selectDiverse(rankGapTracks(vector), {
+      limit: 3,
+      maxPerGroup: 2,
+      penalty: 0.035,
+      groupOf: ({ track }) => track.group,
+    });
+    if (!matches.length) return "";
+
+    const topScore = matches[0].score || 1;
+
+    return `
+      <details class="beyond-results">
+        <summary class="beyond-results-summary">
+          <span>
+            <span class="beyond-results-kicker">Beyond Olongapo</span>
+            <span class="beyond-results-title">Dreaming of a program not offered here?</span>
+          </span>
+          <span class="beyond-results-toggle" aria-hidden="true"></span>
+        </summary>
+        <p class="beyond-results-lede">These are in-demand programs that are not in the current Olongapo directory. Each card shows the closest local bridge and the next step to take.</p>
+        <div class="beyond-grid">
+          ${matches
+            .map(({ track, score }) => {
+              const percent = Math.max(
+                1,
+                Math.round((score / topScore) * 100)
+              );
+              return pathwayUI.renderCard(track, {
+                compact: true,
+                matchPercent: percent,
+              });
+            })
+            .join("")}
+        </div>
+        <div class="beyond-actions">
+          <a class="btn btn-soft" href="colleges.html#beyond-olongapo">See all pathways</a>
+        </div>
+      </details>`;
+  };
+
   const renderResults = () => {
     const vector = getUserVector();
     const topTraits = getTopUserTraits(vector);
@@ -537,17 +632,26 @@
           ? "associate"
           : null;
 
-      const programs = rankPrograms(vector, {
-        level,
-        licensure: state.practicalValues.licensure,
-        location,
-      }).slice(0, 3);
+      const programs = selectDiverse(
+        rankPrograms(vector, {
+          level,
+          licensure: state.practicalValues.licensure,
+          location,
+        }),
+        {
+          limit: 3,
+          maxPerGroup: 2,
+          penalty: 0.035,
+          groupOf: ({ profile }) => profile.family,
+        }
+      );
 
       const certs = rankCertifications(vector, {
         goal: certGoal,
       }).slice(0, 2);
 
       const topScore = programs[0]?.score || 1;
+      const beyond = renderBeyondResults(vector);
 
       body = `
         <section class="quiz-results">
@@ -572,6 +676,8 @@
                 </details>`
               : ""
           }
+
+          ${beyond}
 
           <div class="result-actions">
             <button class="btn btn-primary" type="button" data-restart>Take the quiz again</button>

@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Find your program — NextTrack</title>
-  <meta name="description" content="A short multiple-choice quiz that matches your interests to college programs and TESDA certificates in Olongapo City." />
+  <title>Find your program — NexTrack</title>
+  <meta name="description" content="A short multiple-choice quiz that matches your interests to college programs and TESDA certificates in Olongapo City, plus pathways for in-demand programs not offered locally." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="quiz.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pathways.css" />
+  <link rel="stylesheet" href="css/quiz.css" />
 </head>
 <body class="quiz-page">
   <svg class="svg-sprite" aria-hidden="true" focusable="false">
     <symbol id="icon-logo-bold" viewBox="0 0 24 24" fill="none">
-      <path d="M12 21.2s-6.9-6.3-6.9-11.1a6.9 6.9 0 0 1 12-4.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
-      <circle cx="12" cy="10" r="1.9" fill="currentColor" />
-      <path d="M18.4 2.6v7.2M14.8 6.2h7.2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.5" />
+      <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2.5" />
+      <circle cx="12" cy="12" r="1.9" fill="currentColor" />
     </symbol>
     <symbol id="icon-arrow-right" viewBox="0 -960 960 960" fill="currentColor">
       <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
@@ -30,19 +31,19 @@
   </svg>
 
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="NextTrack home">
+    <a class="brand" href="index.html" aria-label="NexTrack home">
       <span class="brand-mark">
         <svg class="icon" aria-hidden="true"><use href="#icon-logo-bold" /></svg>
       </span>
       <span class="brand-lockup">
-        <span class="brand-word">NextTrack</span>
+        <span class="brand-word">NexTrack</span>
         <svg class="brand-mini icon" aria-hidden="true"><use href="#icon-logo-bold" /></svg>
       </span>
     </a>
 
     <nav class="main-nav" aria-label="Main">
       <a href="index.html#how-it-works">How it works</a>
-      <a href="index.html#programs">Explore programs</a>
+      <a href="index.html#explore-programs">Explore programs</a>
       <a href="colleges.html">Olongapo colleges</a>
       <a class="is-active" href="quiz.html">Find my program</a>
     </nav>
@@ -58,12 +59,14 @@
   </main>
 
   <footer class="quiz-footer">
-    <p>NextTrack · Olongapo City program finder</p>
+    <p>NexTrack · Olongapo City program finder</p>
     <a href="index.html">Back to home</a>
   </footer>
 
-  <script src="colleges.js"></script>
-  <script src="quiz-data.js"></script>
-  <script src="quiz.js"></script>
+  <script src="js/colleges.js"></script>
+  <script src="data/pathways-data.js"></script>
+  <script src="js/pathways.js"></script>
+  <script src="data/quiz-data.js"></script>
+  <script src="js/quiz.js"></script>
 </body>
 </html>

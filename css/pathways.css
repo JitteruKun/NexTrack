@@ -1,0 +1,393 @@
+/* =========================================
+   BEYOND OLONGAPO PATHWAYS
+   ========================================= */
+.beyond-section {
+  width: 100%;
+  max-width: 1120px;
+  margin: 72px auto 0;
+  scroll-margin-top: 112px;
+}
+
+.beyond-hero {
+  max-width: 780px;
+}
+
+.beyond-title {
+  margin: 0;
+  font-family: "Archivo Black", "Arial Black", sans-serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.beyond-lede {
+  max-width: 720px;
+  margin: 16px 0 0;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+#beyond-list {
+  margin-top: 24px;
+}
+
+.beyond-group {
+  margin-top: 16px;
+  border: 1px solid rgba(79, 70, 206, 0.1);
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: 0 8px 28px rgba(36, 36, 61, 0.06);
+  overflow: hidden;
+}
+
+.beyond-group-summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 28px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.beyond-group-summary::-webkit-details-marker {
+  display: none;
+}
+
+.beyond-group-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.beyond-group-kicker {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+
+.beyond-group-title {
+  font-family: "Archivo Black", "Arial Black", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.beyond-group-desc {
+  max-width: 780px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.beyond-group-toggle,
+.beyond-results-toggle {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(79, 70, 206, 0.2);
+  border-radius: 50%;
+  color: var(--purple);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.beyond-group-toggle::before,
+.beyond-results-toggle::before {
+  content: "+";
+}
+
+.beyond-group[open] .beyond-group-toggle::before,
+.beyond-results[open] .beyond-results-toggle::before {
+  content: "\2212";
+}
+
+.beyond-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 0 28px 28px;
+}
+
+.beyond-card {
+  padding: 20px;
+  border: 1px solid rgba(79, 70, 206, 0.1);
+  border-radius: 14px;
+  background: #fbfaff;
+}
+
+.beyond-card-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.beyond-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--purple);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.beyond-level {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted-light);
+}
+
+.beyond-score {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: auto;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--purple);
+}
+
+.beyond-score small {
+  margin-top: 3px;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-light);
+}
+
+.beyond-name {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.beyond-why {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.beyond-label {
+  margin: 16px 0 8px;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+
+.beyond-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.beyond-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.beyond-chip--cert {
+  background: #fff8ea;
+  border-color: rgba(180, 120, 0, 0.2);
+}
+
+.beyond-empty {
+  margin: 12px 0 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--muted-light);
+}
+
+.beyond-steps {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.beyond-steps li + li {
+  margin-top: 5px;
+}
+
+.beyond-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(79, 70, 206, 0.16);
+}
+
+.beyond-links a {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--purple);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.beyond-disclaimer {
+  max-width: 780px;
+  margin: 20px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted-light);
+}
+
+/* Quiz results wrapper */
+.beyond-results {
+  margin-top: 28px;
+  border: 1px solid rgba(79, 70, 206, 0.12);
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: 0 8px 28px rgba(36, 36, 61, 0.05);
+  overflow: hidden;
+}
+
+.beyond-results-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 22px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.beyond-results-summary::-webkit-details-marker {
+  display: none;
+}
+
+.beyond-results-kicker {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+
+.beyond-results-title {
+  display: block;
+  font-family: "Archivo Black", "Arial Black", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.beyond-results-lede {
+  margin: 0 22px 18px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.beyond-results .beyond-grid {
+  grid-template-columns: 1fr;
+  padding: 0 22px 22px;
+}
+
+.beyond-results .beyond-card {
+  background: var(--white);
+}
+
+.beyond-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 22px 22px;
+}
+
+@media (max-width: 900px) {
+  .beyond-section {
+    margin-top: 56px;
+    scroll-margin-top: 168px;
+  }
+
+  .beyond-title {
+    font-size: 30px;
+  }
+
+  .beyond-group-summary {
+    padding: 20px 22px;
+  }
+
+  .beyond-grid {
+    grid-template-columns: 1fr;
+    padding: 0 22px 22px;
+  }
+}
+
+@media (max-width: 620px) {
+  .beyond-section {
+    scroll-margin-top: 140px;
+  }
+
+  .beyond-title {
+    font-size: 26px;
+  }
+
+  .beyond-group-title {
+    font-size: 20px;
+  }
+
+  .beyond-card {
+    padding: 18px;
+  }
+
+  .beyond-score {
+    margin-left: 0;
+  }
+
+  .beyond-results-summary {
+    padding: 18px;
+  }
+
+  .beyond-results-title {
+    font-size: 19px;
+  }
+
+  .beyond-results-lede {
+    margin: 0 18px 16px;
+  }
+
+  .beyond-results .beyond-grid {
+    padding: 0 18px 18px;
+  }
+
+  .beyond-actions {
+    padding: 0 18px 18px;
+  }
+}

@@ -1,0 +1,681 @@
+/* Track detail — field notes */
+body.has-dialog {
+  overflow: hidden;
+}
+
+.track-dialog {
+  width: min(1120px, calc(100vw - 48px));
+  max-width: 1120px;
+  max-height: calc(100vh - 48px);
+  padding: 0;
+  border: 1px solid rgba(79, 70, 206, 0.28);
+  border-radius: 3px;
+  background: var(--paper-light);
+  color: var(--ink);
+  box-shadow: 14px 14px 0 rgba(79, 70, 206, 0.16), 0 32px 90px rgba(36, 36, 61, 0.18);
+  overflow: hidden;
+}
+
+.track-dialog::backdrop {
+  background: rgba(36, 36, 61, 0.62);
+  backdrop-filter: none;
+}
+
+.track-dialog[open] {
+  animation: track-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes track-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) rotate(-0.25deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.track-shell {
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.track-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+  min-height: 640px;
+}
+
+.track-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: auto;
+  height: auto;
+  padding: 8px 10px;
+  border: 1px solid rgba(79, 70, 206, 0.35);
+  border-radius: 0;
+  background: var(--paper-light);
+  color: var(--purple);
+  box-shadow: 3px 3px 0 rgba(79, 70, 206, 0.16);
+  backdrop-filter: none;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.track-close:hover {
+  background: var(--purple);
+  color: var(--paper-light);
+}
+
+.track-close:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 3px;
+}
+
+.track-close .icon {
+  width: 13px;
+  height: 13px;
+}
+
+.track-clues-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 34px 30px;
+  background-color: var(--paper-deep);
+  background-image: radial-gradient(rgba(79, 70, 206, 0.12) 0.55px, transparent 0.55px);
+  background-size: 4px 4px;
+}
+
+.track-clues-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.track-kicker {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+
+.track-index {
+  margin: 0;
+  font-family: "Archivo Black", "Arial Black", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--purple);
+}
+
+.track-index-total {
+  margin-left: 4px;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.track-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 22px;
+}
+
+.track-chip {
+  display: inline;
+  padding: 0 2px 1px;
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(transparent 56%, rgba(255, 255, 255, 0.75) 56%);
+  color: var(--ink);
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.4;
+  box-shadow: none;
+}
+
+.track-program-card {
+  position: relative;
+  margin-top: 28px;
+  border: 1px solid rgba(79, 70, 206, 0.22);
+  border-radius: 2px;
+  background: var(--paper-light);
+  box-shadow: 7px 7px 0 rgba(79, 70, 206, 0.12);
+  transform: rotate(-0.7deg);
+  overflow: hidden;
+}
+
+.track-program-card::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  z-index: 2;
+  width: 70px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+.track-program-media {
+  position: relative;
+  height: 160px;
+  background: var(--paper-deep);
+}
+
+.track-program-media.is-icon-only {
+  background: linear-gradient(135deg, var(--lavender) 0%, var(--paper) 55%, var(--paper-deep) 100%);
+}
+
+.track-program-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.track-program-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(36, 36, 61, 0) 55%, rgba(36, 36, 61, 0.25));
+  pointer-events: none;
+}
+
+.track-program-icon {
+  position: absolute;
+  left: 20px;
+  bottom: -22px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(79, 70, 206, 0.35);
+  border-radius: 2px;
+  background: var(--purple);
+  color: var(--white);
+  box-shadow: 4px 4px 0 rgba(79, 70, 206, 0.2);
+  transform: rotate(3deg);
+}
+
+.track-program-icon .icon {
+  width: 25px;
+  height: 25px;
+}
+
+.track-program-body {
+  padding: 36px 24px 24px;
+  background: var(--paper-light);
+}
+
+.track-kicker--small {
+  color: var(--purple);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+}
+
+.track-program-name {
+  margin: 7px 0 0;
+  font-family: "Archivo Black", "Arial Black", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.track-why-label {
+  margin: 22px 0 0;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+
+.track-why {
+  margin: 8px 0 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.track-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 18px;
+}
+
+.track-tag {
+  padding: 0 0 2px;
+  border: 0;
+  border-bottom: 1px solid rgba(79, 70, 206, 0.35);
+  border-radius: 0;
+  background: none;
+  color: var(--purple);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.track-note {
+  position: relative;
+  align-self: flex-start;
+  max-width: 92%;
+  margin: 28px 0 0 4px;
+  padding: 14px 14px 16px;
+  border: 1px solid rgba(79, 70, 206, 0.25);
+  border-radius: 1px;
+  background: var(--paper-light);
+  color: var(--ink);
+  box-shadow: 4px 5px 0 rgba(79, 70, 206, 0.1);
+  transform: rotate(-1.2deg);
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.track-note::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 46px;
+  height: 14px;
+  border-left: 1px dashed rgba(79, 70, 206, 0.18);
+  border-right: 1px dashed rgba(79, 70, 206, 0.18);
+  background: rgba(210, 222, 248, 0.85);
+  transform: translateX(-50%) rotate(2deg);
+}
+
+.track-explainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 52px 54px 38px;
+  background: var(--paper-light);
+  border-left: 1px dashed rgba(79, 70, 206, 0.2);
+}
+
+.track-heading {
+  max-width: 540px;
+  margin: 12px 0 20px;
+  font-family: "Archivo Black", "Arial Black", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.track-heading em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--purple);
+}
+
+.track-intro {
+  max-width: 520px;
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.track-list-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 30px 0 0;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.track-list-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(79, 70, 206, 0.2);
+}
+
+.track-reasons {
+  display: grid;
+  gap: 0;
+  max-width: 540px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.track-reason {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  padding: 17px 0;
+}
+
+.track-reason + .track-reason {
+  border-top: 1px dashed rgba(79, 70, 206, 0.2);
+}
+
+.track-reason-number {
+  font-family: "Archivo Black", "Arial Black", sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--purple);
+}
+
+.track-reason h3 {
+  margin: 0 0 4px;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.track-reason p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.track-back {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  width: 100%;
+  margin-top: auto;
+  padding: 20px 0 0;
+  border: 0;
+  border-top: 1px solid rgba(79, 70, 206, 0.22);
+  background: none;
+  appearance: none;
+  color: var(--ink);
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.track-back:hover {
+  color: var(--purple);
+}
+
+.track-back .icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 180ms ease;
+}
+
+.track-back:hover .icon {
+  transform: translateX(3px);
+}
+
+.track-back:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 4px;
+}
+
+@media (min-width: 801px) and (max-width: 1000px) {
+  .track-dialog {
+    width: calc(100vw - 40px);
+  }
+
+  .track-shell {
+    max-height: calc(100vh - 40px);
+  }
+
+  .track-layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .track-clues-panel {
+    padding: 34px 26px 26px;
+  }
+
+  .track-explainer {
+    padding: 40px 34px 30px;
+  }
+
+  .track-heading {
+    font-size: 34px;
+  }
+
+  .track-program-name {
+    font-size: 25px;
+  }
+
+  .track-program-media {
+    height: 150px;
+  }
+
+  .track-program-body {
+    padding: 34px 20px 22px;
+  }
+
+  .track-chip {
+    font-size: 13.5px;
+  }
+
+  .track-intro {
+    font-size: 14.5px;
+  }
+
+  .track-reason {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .track-reason-number {
+    font-size: 20px;
+  }
+
+  .track-close {
+    top: 14px;
+    right: 14px;
+  }
+}
+
+@media (max-width: 800px) {
+  .track-dialog {
+    width: calc(100vw - 28px);
+    max-height: calc(100vh - 28px);
+    border-radius: 2px;
+    box-shadow: 8px 8px 0 rgba(79, 70, 206, 0.14);
+  }
+
+  .track-shell {
+    max-height: calc(100vh - 28px);
+  }
+
+  .track-layout {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .track-clues-panel {
+    padding: 30px 22px 24px;
+  }
+
+  .track-explainer {
+    padding: 34px 26px 28px;
+    border-top: 1px dashed rgba(79, 70, 206, 0.2);
+    border-left: 0;
+  }
+
+  .track-heading {
+    font-size: 36px;
+  }
+
+  .track-program-media {
+    height: 180px;
+  }
+
+  .track-program-name {
+    font-size: 27px;
+  }
+
+  .track-back {
+    margin-top: 32px;
+  }
+
+  .track-close {
+    top: 14px;
+    right: 14px;
+  }
+
+  .track-note {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .track-dialog {
+    width: calc(100vw - 16px);
+    max-height: calc(100vh - 16px);
+    box-shadow: 5px 5px 0 rgba(79, 70, 206, 0.12);
+  }
+
+  .track-shell {
+    max-height: calc(100vh - 16px);
+  }
+
+  .track-clues-panel {
+    padding: 26px 18px 22px;
+  }
+
+  .track-explainer {
+    padding: 30px 20px 24px;
+  }
+
+  .track-close {
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+  }
+
+  .track-close span {
+    display: none;
+  }
+
+  .track-close .icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .track-kicker {
+    font-size: 9.5px;
+    letter-spacing: 0.13em;
+  }
+
+  .track-index {
+    font-size: 16px;
+  }
+
+  .track-chip {
+    font-size: 13.5px;
+  }
+
+  .track-program-card {
+    transform: rotate(-0.4deg);
+  }
+
+  .track-program-media {
+    height: 150px;
+  }
+
+  .track-program-body {
+    padding: 34px 18px 22px;
+  }
+
+  .track-program-name {
+    font-size: 24px;
+  }
+
+  .track-heading {
+    font-size: 30px;
+  }
+
+  .track-intro {
+    font-size: 14.5px;
+  }
+
+  .track-list-label {
+    margin-top: 26px;
+    font-size: 9px;
+  }
+
+  .track-reason {
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 12px;
+    padding: 15px 0;
+  }
+
+  .track-reason-number {
+    font-size: 20px;
+  }
+
+  .track-reason h3 {
+    font-size: 13.5px;
+  }
+
+  .track-reason p {
+    font-size: 12.5px;
+  }
+
+  .track-back {
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+  }
+
+  .track-note {
+    margin-top: 24px;
+  }
+}

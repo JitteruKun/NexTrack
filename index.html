@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NextTrack — Find your academic track</title>
+  <title>NexTrack — Find your academic track</title>
   <meta name="description" content="Turn your ideas and interests into your next academic track." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/track-dialog.css" />
 </head>
 <body>
   <svg class="svg-sprite" aria-hidden="true" focusable="false">
     <symbol id="icon-logo" viewBox="0 0 24 24" fill="none">
-      <path d="M12 21.2s-6.9-6.3-6.9-11.1a6.9 6.9 0 0 1 12-4.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-      <circle cx="12" cy="10" r="1.6" fill="currentColor" />
-      <path d="M18.4 2.6v7.2M14.8 6.2h7.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+      <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" />
+      <circle cx="12" cy="12" r="1.6" fill="currentColor" />
     </symbol>
     <symbol id="icon-logo-bold" viewBox="0 0 24 24" fill="none">
-      <path d="M12 21.2s-6.9-6.3-6.9-11.1a6.9 6.9 0 0 1 12-4.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
-      <circle cx="12" cy="10" r="1.9" fill="currentColor" />
-      <path d="M18.4 2.6v7.2M14.8 6.2h7.2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.5" />
+      <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2.5" />
+      <circle cx="12" cy="12" r="1.9" fill="currentColor" />
     </symbol>
     <symbol id="icon-arrow-right" viewBox="0 -960 960 960" fill="currentColor">
       <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
@@ -58,36 +59,34 @@
   </svg>
 
   <header class="site-header">
-    <a class="brand" href="#welcome" aria-label="NextTrack home">
+    <a class="brand" href="#welcome" aria-label="NexTrack home">
       <span class="brand-mark">
         <svg class="icon" aria-hidden="true"><use href="#icon-logo-bold" /></svg>
       </span>
       <span class="brand-lockup">
-        <span class="brand-word">NextTrack</span>
+        <span class="brand-word">NexTrack</span>
         <svg class="brand-mini icon" aria-hidden="true"><use href="#icon-logo-bold" /></svg>
       </span>
     </a>
 
     <nav class="main-nav" aria-label="Main">
       <a href="#how-it-works" data-section="how-it-works">How it works</a>
-      <a href="#programs" data-section="programs">Explore programs</a>
+      <a href="#explore-programs" data-section="explore-programs">Explore programs</a>
       <a href="colleges.html">Olongapo colleges</a>
-      <a href="quiz.html">Find my program</a>
-      <a class="is-active" href="#welcome" data-section="welcome">Start Exploring</a>
     </nav>
 
-    <a class="btn btn-primary header-cta" href="#how-it-works">
+    <a class="btn btn-primary header-cta" href="quiz.html">
       Get Started
       <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg>
     </a>
   </header>
 
   <main>
-    <section class="section section-welcome" id="welcome" aria-label="Welcome to NextTrack">
+    <section class="section section-welcome" id="welcome" aria-label="Welcome to NexTrack">
       <div class="hero">
         <div class="hero-copy">
           <h1 class="hero-title">
-            Welcome to <span class="text-purple">NextTrack</span><svg class="title-mark icon" aria-hidden="true"><use href="#icon-logo-bold" /></svg>
+            Welcome to <span class="text-purple">NexTrack</span><svg class="title-mark icon" aria-hidden="true"><use href="#icon-logo-bold" /></svg>
           </h1>
 
           <h2 class="hero-subtitle">
@@ -98,13 +97,12 @@
           <p class="hero-lede">Turn your ideas and Interest into your next academic track</p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#how-it-works">
+            <a class="btn btn-primary" href="quiz.html">
               Get Started
               <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right" /></svg>
             </a>
-            <a class="btn btn-soft" href="#programs">Explore Opportunities</a>
+            <a class="btn btn-soft" href="#explore-programs">Explore Programs</a>
             <a class="btn btn-soft" href="colleges.html">Olongapo Colleges</a>
-            <a class="btn btn-soft" href="quiz.html">Find My Program</a>
           </div>
 
           <ul class="hero-checks">
@@ -121,8 +119,8 @@
       <p class="page-footer">Academic Track Finder</p>
     </section>
 
-    <section class="section section-how" id="how-it-works" aria-label="How NextTrack works">
-      <h2 class="page-title">How Does NextTrack Work?</h2>
+    <section class="section section-how" id="how-it-works" aria-label="How NexTrack works">
+      <h2 class="page-title">How Does NexTrack Work?</h2>
 
       <div class="steps">
         <article class="step">
@@ -162,77 +160,40 @@
       </div>
     </section>
 
-    <section class="section section-programs" id="programs" aria-label="Sample college programs">
-      <h2 class="page-title">Sample College Programs</h2>
+    <section class="section section-explore" id="explore-programs" aria-labelledby="explore-programs-title">
+      <div class="explore-inner">
+        <div class="explore-head">
+          <div class="explore-heading">
+            <p class="explore-kicker">All available programs</p>
+            <h2 class="page-title" id="explore-programs-title">Explore Programs</h2>
+            <p class="explore-lede">
+              Browse every program offered across the Olongapo colleges in our directory.
+              Search by program or filter by school.
+            </p>
+          </div>
 
-      <div class="programs-grid">
-        <article class="program-card">
-          <div class="card-photo">
-            <img src="assets/Computer Technologies.png" alt="Circuit boards and digital systems" />
+          <div class="explore-controls">
+            <label class="explore-field">
+              <span class="sr-only">Search programs</span>
+              <input id="program-search" type="search" placeholder="Search programs" autocomplete="off" />
+            </label>
+            <label class="explore-field">
+              <span class="sr-only">Filter by college</span>
+              <select id="program-college-filter">
+                <option value="">All colleges</option>
+              </select>
+            </label>
           </div>
-          <div class="card-body">
-            <div class="card-title-row">
-              <h3 class="card-title">Computer Technologies</h3>
-              <svg class="card-icon icon" aria-hidden="true"><use href="#icon-code" /></svg>
-            </div>
-            <p class="card-desc">Build software, work with AI, and turn complex problems into tools people can use.</p>
-            <button class="card-link" type="button" data-track="computer" aria-haspopup="dialog" aria-controls="track-dialog">
-              Explore this track
-              <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg>
-            </button>
-          </div>
-        </article>
+        </div>
 
-        <article class="program-card">
-          <div class="card-photo">
-            <img src="assets/Teaching.png" alt="Students learning together in a classroom" />
-          </div>
-          <div class="card-body">
-            <div class="card-title-row">
-              <h3 class="card-title">People and Communities</h3>
-              <svg class="card-icon icon" aria-hidden="true"><use href="#icon-groups" /></svg>
-            </div>
-            <p class="card-desc">Turn empathy and communication into work that helps communities learn and grow.</p>
-            <button class="card-link" type="button" data-track="people" aria-haspopup="dialog" aria-controls="track-dialog">
-              Explore this track
-              <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg>
-            </button>
-          </div>
-        </article>
+        <p class="explore-count" id="program-count" aria-live="polite"></p>
+        <div class="program-directory" id="program-directory"></div>
+        <p class="explore-empty" id="program-empty" hidden>No programs match your search.</p>
 
-        <article class="program-card">
-          <div class="card-photo">
-            <img src="assets/Stocks.jpg" alt="Financial data and market trends" />
-          </div>
-          <div class="card-body">
-            <div class="card-title-row">
-              <h3 class="card-title">Stocks and Businesses</h3>
-              <svg class="card-icon icon" aria-hidden="true"><use href="#icon-monitoring" /></svg>
-            </div>
-            <p class="card-desc">Use data and strategy to understand markets and make confident business decisions.</p>
-            <button class="card-link" type="button" data-track="business" aria-haspopup="dialog" aria-controls="track-dialog">
-              Explore this track
-              <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg>
-            </button>
-          </div>
-        </article>
-        
-        <article class="program-card">
-          <div class="card-photo">
-            <img src="assets/Healthcare.jpg" alt="Healthcare professional using a tablet" />
-          </div>
-          <div class="card-body">
-            <div class="card-title-row">
-              <h3 class="card-title">Allied Healthcare</h3>
-              <svg class="card-icon icon" aria-hidden="true"><use href="#icon-ecg-heart" /></svg>
-            </div>
-            <p class="card-desc">Connect science and care to support people’s health, recovery, and wellbeing.</p>
-            <button class="card-link" type="button" data-track="health" aria-haspopup="dialog" aria-controls="track-dialog">
-              Explore this track
-              <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg>
-            </button>
-          </div>
-        </article>
+        <p class="programs-note">
+          Looking for a program not offered in Olongapo?
+          <a href="colleges.html#beyond-olongapo">See the pathway guide</a>
+        </p>
       </div>
     </section>
   </main>
@@ -247,8 +208,8 @@
       <div class="track-layout">
         <aside class="track-clues-panel">
           <div class="track-clues-head">
-            <p class="track-kicker">A few notes from your answers</p>
-            <p class="track-index"><span id="track-index">01</span><span class="track-index-total">/ 04</span></p>
+            <p class="track-kicker" id="track-clues-kicker">A few notes from your answers</p>
+            <p class="track-index"><span id="track-index">01</span><span class="track-index-total" id="track-index-total">/ 04</span></p>
           </div>
 
           <div class="track-chips" id="track-clues"></div>
@@ -261,7 +222,7 @@
               </span>
             </div>
             <div class="track-program-body">
-              <p class="track-kicker track-kicker--small">One possible route</p>
+              <p class="track-kicker track-kicker--small" id="track-route">One possible route</p>
               <h2 class="track-program-name" id="track-program-name">BS Computer Science</h2>
               <p class="track-why-label">Why it might fit</p>
               <p class="track-why" id="track-why"></p>
@@ -280,7 +241,7 @@
           <ol class="track-reasons" id="track-reasons"></ol>
 
           <button class="track-back" type="button" data-close-track>
-            Browse all tracks
+            Browse all programs
             <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right" /></svg>
           </button>
         </section>
@@ -288,6 +249,7 @@
     </div>
   </dialog>
 
-  <script src="script.js"></script>
+  <script src="js/colleges.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
